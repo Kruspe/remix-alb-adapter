@@ -1,25 +1,6 @@
 version: 2
 updates:
 - package-ecosystem: "npm"
-  directory: "/example"
-  schedule:
-    interval: "daily"
-  groups:
-    remix:
-      patterns:
-      - "@remix-run*"
-      - "remix"
-    react:
-      patterns:
-      - "react*"
-  labels:
-  - "dependencies"
-  - "example"
-- package-ecosystem: "npm"
-  directory: "/packages/remix-alb-adapter"
-  schedule:
-    interval: "daily"
-- package-ecosystem: "npm"
   directory: "/"
   schedule:
     interval: "daily"
