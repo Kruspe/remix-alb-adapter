@@ -11,7 +11,9 @@ updates:
       - "remix"
     react:
       patterns:
-      - "react*"
+  labels:
+  - "dependencies"
+  - "example"
 - package-ecosystem: "npm"
   directory: "/packages/remix-alb-adapter"
   schedule:
