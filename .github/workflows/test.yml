@@ -8,7 +8,7 @@ on:
     - reopened
 
 jobs:
-  test-frontend:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
