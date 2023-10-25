@@ -11,6 +11,7 @@ updates:
       - "remix"
     react:
       patterns:
+      - "react*"
   labels:
   - "dependencies"
   - "example"
