@@ -1,0 +1,24 @@
+version: 3
+
+tasks:
+  default:
+    cmds:
+    - task: lint
+    - task: prettier
+    - task: test
+    - task: build
+
+#  publish:
+#    deps: [ ci ]
+#    cmds:
+#    - npm publish
+
+  lint:
+    cmds: [ npm run lint ]
+  prettier:
+    cmds: [ npm run prettier ]
+  test:
+    cmds:
+    - npm run test
+
+

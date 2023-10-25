@@ -1,7 +1,15 @@
 version: 3
 
-tasks:
-  ci:
-    cmds:
-    - echo 'Nothing here yet'
+includes:
+  adapter:
+    taskfile: packages/remix-alb-adapter/
+    dir: packages/remix-alb-adapter/
 
+tasks:
+  default:
+    cmds:
+    - task: adapter:default
+
+  install:
+    cmds:
+    - npm ci

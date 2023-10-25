@@ -39,12 +39,24 @@ export function createRequestHandler({
 }
 
 export function createRemixRequest(event: ALBEvent): Request {
-  const host = event.headers?.["x-forwarded-host"] || event.headers?.host;
-  // @ts-ignore
-  const searchParameters = Object.entries(event.queryStringParameters).map(
-    ([key, value]) => `${key}=${value}`,
-  );
+  let searchParameters = [];
+  if (event.queryStringParameters) {
+    searchParameters.push(
+      Object.entries(event.queryStringParameters).map(
+        ([key, value]) => `${key}=${value}`,
+      ),
+    );
+  }
+  if (event.multiValueQueryStringParameters) {
+    searchParameters.push(
+      Object.entries(event.multiValueQueryStringParameters).map(
+        ([key, value]) => `${key}=${value}`,
+      ),
+    );
+  }
   const queryString = searchParameters.join("&");
+
+  const host = event.headers?.["x-forwarded-host"] || event.headers?.host;
   const search = queryString.length ? `?${queryString}` : "";
   const scheme = process.env.ARC_SANDBOX ? "http" : "https";
   const url = new URL(`${scheme}://${host}${event.path}${search}`);
@@ -85,10 +97,6 @@ export function createRemixHeaders(requestHeaders?: ALBEventHeaders): Headers {
     if (value) {
       headers.append(header, value);
     }
-  }
-
-  if (requestHeaders["cookies"]) {
-    headers.append("Cookie", requestHeaders["cookies"]);
   }
 
   return headers;

@@ -3,7 +3,13 @@
   "description": "Remix Adapter for ALB on AWS",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kruspe/remix-alb-adapter",
+    "directory": "packages/remix-alb-adapter"
+  },
   "devDependencies": {
     "@remix-run/node": "^2.1.0",
     "@types/aws-lambda": "^8.10.125",
@@ -24,10 +30,18 @@
     "@remix-run/node": "^2.1.0"
   },
   "scripts": {
-    "build": "rm -rf build && tsc -b",
-    "test": "jest"
+    "build": "rm -rf dist && tsc -b",
+    "test": "jest",
+    "lint": "eslint .",
+    "prettier": "prettier --check ."
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "files": [
+    "dist/",
+    "CHANGELOG.md",
+    "LICENSE.md",
+    "README.md"
+  ]
 }

@@ -174,11 +174,9 @@ describe("architect createRequestHandler", () => {
         .expectResolve((res) => {
           expect(res.statusCode).toBe(200);
           expect(res.headers?.["x-time-of-year"]).toBe("most wonderful");
-          expect(res.headers?.["cookies"]).toEqual([
-            "first=one; Expires=0; Path=/; HttpOnly; Secure; SameSite=Lax",
-            "second=two; MaxAge=1209600; Path=/; HttpOnly; Secure; SameSite=Lax",
+          expect(res.headers?.["set-cookie"]).toEqual(
             "third=three; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Path=/; HttpOnly; Secure; SameSite=Lax",
-          ]);
+          );
         });
     });
   });
@@ -229,7 +227,7 @@ describe("architect createRemixHeaders", () => {
 describe("architect createRemixRequest", () => {
   it("creates a request with the correct headers", () => {
     const remixRequest = createRemixRequest(
-      createMockEvent({ headers: { cookies: "__session=value" } }),
+      createMockEvent({ headers: { cookie: "__session=value" } }),
     );
 
     expect(remixRequest.method).toBe("GET");

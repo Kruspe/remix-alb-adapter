@@ -10,8 +10,7 @@
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "rootDir": ".",
-    "outDir": "../../build/node_modules/remix-alb-adapter/dist"
+    "outDir": "./dist"
   }
 }

@@ -6,10 +6,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/kruspe/remix-alb-adapter",
-    "directory": "remix-alb-adapter"
+    "directory": "example"
   },
   "scripts": {
-    "build": "remix build",
+    "build": "remix build && node esbuild.config.mjs",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
     "typecheck": "tsc"
@@ -21,7 +21,8 @@
     "@remix-run/serve": "^2.1.0",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "remix-alb-adapter": "file:../packages/remix-alb-adapter"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.1.0",
