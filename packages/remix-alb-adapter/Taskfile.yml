@@ -20,5 +20,8 @@ tasks:
   test:
     cmds:
     - npm run test
+  build:
+    cmds:
+    - npm run build
 
 
