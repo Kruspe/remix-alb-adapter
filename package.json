@@ -1,0 +1,14 @@
+{
+  "name": "remix-alb-adapter",
+  "private": true,
+  "devDependencies": {
+    "@remix-run/eslint-config": "^2.1.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3"
+  },
+  "workspaces": [
+    "packages/*",
+    "example"
+  ]
+}
