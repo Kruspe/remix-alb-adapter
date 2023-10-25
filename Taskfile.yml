@@ -10,6 +10,11 @@ tasks:
     cmds:
     - task: adapter:default
 
+  ci:
+    deps: [ install ]
+    cmds:
+    - task: default
+
   install:
     cmds:
     - npm ci

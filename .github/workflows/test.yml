@@ -19,4 +19,4 @@ jobs:
     - name: Install Task
       uses: arduino/setup-task@v1
     - name: Test
-      run: task
+      run: task ci
