@@ -8,10 +8,10 @@ tasks:
     - task: test
     - task: build
 
-#  publish:
-#    deps: [ ci ]
-#    cmds:
-#    - npm publish
+  publish:
+    deps: [ default ]
+    cmds:
+    - npm publish
 
   lint:
     cmds: [ npm run lint ]
