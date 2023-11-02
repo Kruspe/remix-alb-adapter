@@ -25,7 +25,7 @@ export const handler = createRequestHandler({
 ```
 
 To create the build output first run `npx remix build` and afterward run esbuild.
-You can deploy the build output to your lambda and host the static content however you want. 
+You can deploy the build output to your lambda and host the static content however you want.
 
 ## License
 
