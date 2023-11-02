@@ -18,3 +18,7 @@ tasks:
   install:
     cmds:
     - npm ci
+
+  publish:
+    cmds:
+    - task: adapter:publish
