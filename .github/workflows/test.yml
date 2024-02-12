@@ -17,6 +17,6 @@ jobs:
       with:
         node-version: 18.x
     - name: Install Task
-      uses: arduino/setup-task@v1
+      uses: arduino/setup-task@v2
     - name: Test
       run: task ci
