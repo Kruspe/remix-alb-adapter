@@ -75,7 +75,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "/foo/bar" }))
         .expectResolve((res) => {
@@ -91,7 +91,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "//" }))
         .expectResolve((res) => {
@@ -107,7 +107,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "//foo//bar" }))
         .expectResolve((res) => {
@@ -123,7 +123,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "/foo/bar" }))
         .expectResolve((res) => {
@@ -138,7 +138,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "/foo/bar" }))
         .expectResolve((res) => {
@@ -168,7 +168,7 @@ describe("architect createRequestHandler", () => {
 
       // We don't have a real app to test, but it doesn't matter. We won't ever
       // call through to the real createRequestHandler
-      // @ts-expect-error
+      // @ts-ignore
       await lambdaTester(createRequestHandler({ build: undefined }))
         .event(createMockEvent({ path: "/" }))
         .expectResolve((res) => {

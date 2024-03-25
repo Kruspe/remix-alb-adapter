@@ -22,3 +22,7 @@ tasks:
   publish:
     cmds:
     - task: adapter:publish
+
+  example:build:
+    dir: example
+    cmds: [ npm run build ]
