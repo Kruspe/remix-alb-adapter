@@ -11,7 +11,7 @@
     "directory": "packages/remix-alb-adapter"
   },
   "devDependencies": {
-    "@remix-run/node": "^2.9.2",
+    "@remix-run/node": "^2.10.2",
     "@types/aws-lambda": "^8.10.140",
     "@types/jest": "^29.5.12",
     "@types/lambda-tester": "^4.0.3",
@@ -27,7 +27,7 @@
     "typescript": "^5.5.3"
   },
   "peerDependencies": {
-    "@remix-run/node": "^2.9.2"
+    "@remix-run/node": "^2.10.2"
   },
   "scripts": {
     "build": "rm -rf dist && tsc -b",
