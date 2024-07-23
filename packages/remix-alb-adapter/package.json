@@ -24,7 +24,7 @@
     "lambda-tester": "^4.0.1",
     "prettier": "^3.3.3",
     "ts-jest": "^29.2.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "peerDependencies": {
     "@remix-run/node": "^2.9.2"
