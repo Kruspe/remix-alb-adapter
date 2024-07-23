@@ -58,7 +58,7 @@ function createMockEvent(event: Partial<ALBEvent> = {}) {
   };
 }
 
-describe("architect createRequestHandler", () => {
+describe("createRequestHandler", () => {
   describe("basic requests", () => {
     afterEach(() => {
       mockedCreateRequestHandler.mockReset();
@@ -182,7 +182,7 @@ describe("architect createRequestHandler", () => {
   });
 });
 
-describe("architect createRemixHeaders", () => {
+describe("createRemixHeaders", () => {
   describe("creates fetch headers from architect headers", () => {
     it("handles empty headers", () => {
       const headers = createRemixHeaders({});
@@ -224,7 +224,7 @@ describe("architect createRemixHeaders", () => {
   });
 });
 
-describe("architect createRemixRequest", () => {
+describe("createRemixRequest", () => {
   it("creates a request with the correct headers", () => {
     const remixRequest = createRemixRequest(
       createMockEvent({ headers: { cookie: "__session=value" } }),
@@ -232,6 +232,27 @@ describe("architect createRemixRequest", () => {
 
     expect(remixRequest.method).toBe("GET");
     expect(remixRequest.headers.get("cookie")).toBe("__session=value");
+  });
+
+  it("creates a request with correct searchParams", () => {
+    const url = new URL("http://example.com");
+    url.searchParams.append("foo", "bar");
+    url.searchParams.append("url", "http://example.com");
+
+    const fooParam = encodeURIComponent(url.searchParams.get("foo")!);
+    const urlParam = encodeURIComponent(url.searchParams.get("url")!);
+    const remixRequest = createRemixRequest(
+      createMockEvent({
+        queryStringParameters: {
+          foo: fooParam,
+          url: urlParam,
+        },
+      }),
+    );
+
+    expect(remixRequest.url).toMatchInlineSnapshot(
+      `"https://lambda-alb-123578498.us-east-1.elb.amazonaws.com/?foo=bar&url=${urlParam}"`,
+    );
   });
 });
 

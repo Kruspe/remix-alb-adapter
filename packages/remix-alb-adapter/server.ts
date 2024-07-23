@@ -39,27 +39,30 @@ export function createRequestHandler({
 }
 
 export function createRemixRequest(event: ALBEvent): Request {
-  let searchParameters = [];
+  const searchParameters: Record<string, string> = {};
   if (event.queryStringParameters) {
-    searchParameters.push(
-      Object.entries(event.queryStringParameters).map(
-        ([key, value]) => `${key}=${value}`,
-      ),
-    );
+    Object.entries(event.queryStringParameters).forEach(([key, value]) => {
+      if (value) {
+        searchParameters[key] = decodeURIComponent(value);
+      }
+    });
   }
   if (event.multiValueQueryStringParameters) {
-    searchParameters.push(
-      Object.entries(event.multiValueQueryStringParameters).map(
-        ([key, value]) => `${key}=${value}`,
-      ),
+    Object.entries(event.multiValueQueryStringParameters).forEach(
+      ([key, value]) => {
+        if (value) {
+          searchParameters[key] = decodeURIComponent(value.toString());
+        }
+      },
     );
   }
-  const queryString = searchParameters.join("&");
 
   const host = event.headers?.["x-forwarded-host"] || event.headers?.host;
-  const search = queryString.length ? `?${queryString}` : "";
   const scheme = process.env.ARC_SANDBOX ? "http" : "https";
-  const url = new URL(`${scheme}://${host}${event.path}${search}`);
+  const url = new URL(`${scheme}://${host}${event.path}`);
+  for (const key in searchParameters) {
+    url.searchParams.append(key, searchParameters[key]);
+  }
   const isFormData = event.headers?.["content-type"]?.includes(
     "multipart/form-data",
   );
